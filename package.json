@@ -1,0 +1,24 @@
+{
+  "name": "locaflix",
+  "version": "1.0.0",
+  "description": "projeto CRUD de listagem de filmes",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/odaraodara/locaFlix.git"
+  },
+  "keywords": [],
+  "author": "Marcelo, Julia, Odara, José",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/odaraodara/locaFlix/issues"
+  },
+  "homepage": "https://github.com/odaraodara/locaFlix#readme",
+  "dependencies": {
+    "readline-sync": "^1.4.10"
+  }
+}
