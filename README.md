@@ -4,7 +4,7 @@ O projeto visa construir um sistema crud em javascript, que possua os modulos de
 Fazer uso de programação orientada a objeto.
 
 Integrantes da equipe.
-Odara valença
-José Carlos
-Julia Donato
-Marcelo Amorim
+Odara Valença;
+José Carlos;
+Julia Donato;
+Marcelo Amorim.
