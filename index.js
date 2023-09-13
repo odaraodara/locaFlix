@@ -17,6 +17,7 @@ const filme2 = {
 }
 
 const filmes = [filme1, filme2];
+let geradorId = 2;
 
 console.log("=========LOCAFLIX=========");
 console.log("==========MENU==========");
@@ -74,13 +75,13 @@ function listarFilmes() {
 
 function cadastrarFilme() {
     let nomeFilme = readline.question("Digite o nome do filme: ")
-    let idFilme = readline.question("Digite a id do filme: ")
     let duracaoFilme = readline.question("Digite a duração do filme: ")
     let generoFilme = readline.question("Digite o gênero do filme: ")
     let sinopseFilme = readline.question("Digite a sinopse do filme: ")
+    geradorId ++
 
     const filme = {
-        id: idFilme,
+        id: geradorId,
         nome: nomeFilme,
         duracao: duracaoFilme,
         genero: generoFilme,
