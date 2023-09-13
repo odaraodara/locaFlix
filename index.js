@@ -23,14 +23,16 @@ let geradorId = 2;
 
 let loop = true;
 while (loop) {
-    console.log("=========LOCAFLIX=========");
-    console.log("==========MENU==========");
-    console.log("0 - Sair do Sistema");
-    console.log("1 - Listar filmes");
-    console.log("2 - Cadastrar filme");
-    console.log("3 - Buscar filme");
-    console.log("4 - Editar filme");
-    console.log("========================");  
+  console.log(`
+  =========LOCAFLIX=========
+   ==========MENU==========
+   0 - Sair do Sistema
+   1 - Listar filmes
+   2 - Cadastrar filme
+   3 - Buscar filme
+   4 - Editar filme
+   5 - Deletar filme
+   ========================`);
   let opcao = readline.questionInt("Escolha a opção: ");
   switch (opcao) {
     case 1:
@@ -52,9 +54,13 @@ while (loop) {
       break;
 
     case 4:
-        editarFilme();
+      editarFilme();
       break;
-      
+
+    case 5:
+      deletarFilme();
+      break;
+
     case 0:
       console.log("Sistema fechado!");
       loop = false;
@@ -79,7 +85,9 @@ function listarFilmes() {
 
 function cadastrarFilme() {
   let nomeFilme = readline.question("Digite o nome do filme: ");
-  let duracaoFilme = readline.questionInt("Digite a duração do filme (em min.): ");
+  let duracaoFilme = readline.questionInt(
+    "Digite a duração do filme (em min.): "
+  );
   let generoFilme = readline.question("Digite o gênero do filme: ");
   let sinopseFilme = readline.question("Digite a sinopse do filme: ");
   geradorId++;
@@ -116,33 +124,68 @@ function editarFilme() {
   );
   for (const i of filmes) {
     if (buscarFilme.toLowerCase() === i.nome.toLowerCase()) {
-        console.log(`Filme selecionado: ${i.nome}
+      console.log(`Filme selecionado: ${i.nome}
         - Duração: ${i.duraçao} min
         - Gênero: ${i.genero}
         - Sinopse: ${i.sinopse}
         `);
-        console.log(`Opções de edição: 
+      console.log(`Opções de edição: 
         1 - Editar título
         2 - Editar duração
         3 - Editar gênero
         4 - Editar sinopse
         0 - voltar para o menu principal`);
 
-        const escolha = readline.questionInt("Digite a opção desejada: ")
+      const escolha = readline.questionInt("Digite a opção desejada: ");
 
-        switch(escolha){
-            case 1: i.nome = readline.question("Novo título do filme: ")
-                break;
-            case 2: i.duraçao = readline.questionInt("Novo tempo de duração do filme (em min.): ")
-                break;   
-            case 3: i.genero = readline.question("Novo gênero do filme: ")   
-                break;
-            case 4: i.sinopse = readline.question("Nova sinopse do filme: ")
-                break;
-            case 0: 
-                break;   
-            default: console.log("Opção inválida");       
+      switch (escolha) {
+        case 1:
+          i.nome = readline.question("Novo título do filme: ");
+          break;
+        case 2:
+          i.duraçao = readline.questionInt(
+            "Novo tempo de duração do filme (em min.): "
+          );
+          break;
+        case 3:
+          i.genero = readline.question("Novo gênero do filme: ");
+          break;
+        case 4:
+          i.sinopse = readline.question("Nova sinopse do filme: ");
+          break;
+        case 0:
+          break;
+        default:
+          console.log("Opção inválida");
+      }
+    }
+  }
+}
+
+function deletarFilme() {
+  let buscarFilme = readline.question(
+    "Digite o nome do filme que você deseja deletar: "
+  );
+  for (const i of filmes) {
+    let repetir = true;
+    if (buscarFilme.toLowerCase() === i.nome.toLowerCase()) {
+      while (repetir == true) {
+        let confirmar =
+          readline.questionInt(`Deseja excluir ${i.nome} do sistema?
+            para SIM - digite 1
+            para NÃO - digite 0
+            : `);
+        if (confirmar == 1) {
+          filmes.splice(filmes.indexOf(i), 1);
+          console.log("Filme excluído com sucesso!");
+          repetir = false;
+        } else if (confirmar == 0) {
+          console.log("de volta ao menu principal: ");
+          repetir = false;
+        } else {
+          console.log("opção inválida");
         }
+      }
     }
   }
 }
