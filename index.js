@@ -1,5 +1,15 @@
 const readline = require("readline-sync");
 
+class filmes {
+    constructor (id, nome, duracao, genero, sinopse){
+        this.id = id;
+        this.nome = nome;
+        this.duracao= duracao;
+        this.genero = genero;
+        this.sinopse = sinopse
+    }
+}
+
 const filme1 = {
   id: 1,
   nome: "Titanic",
