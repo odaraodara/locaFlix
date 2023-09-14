@@ -1,15 +1,20 @@
 const readline = require("readline-sync");
 
-class filme {
-    constructor (id, nome, duracao, genero, sinopse){
-        this.id = geradorId++;
-        this.nome = nome;
-        this.duracao= duracao;
-        this.genero = genero;
-        this.sinopse = sinopse
-    }
+let geradorId = 2;
+//GERADOR DA CHAVE IDENTIFICADORA DO OBJETO
+class Filme {
+  //classe dos objetos manipulados
+  constructor(id, nome, duracao, genero, sinopse) {
+    this.id = id;
+    this.nome = nome;
+    this.duracao = duracao;
+    this.genero = genero;
+    this.sinopse = sinopse
+  }
 }
 
+
+//Objetos iniciais
 const filme1 = {
   id: 1,
   nome: "Titanic",
@@ -30,11 +35,16 @@ const filme2 = {
     lugar chamado Paraíso das Cachoeiras.`,
 };
 
+//Banco de dados
 const filmes = [filme1, filme2];
-let geradorId = 2;
 
+//Condição de saida
 let loop = true;
+
+//Laço de repetição do menu
 while (loop) {
+
+  //MENU
   console.log(`
   =========LOCAFLIX=========
    ==========MENU==========
@@ -45,8 +55,11 @@ while (loop) {
    4 - Editar filme
    5 - Deletar filme
    ========================`);
+
+  //Buscando opção do usuario
   let opcao = readline.questionInt("Escolha a opção: ");
   switch (opcao) {
+    //Modulo de consulta
     case 1:
       console.log("Todos os filmes");
       console.log(" ----------------");
@@ -55,24 +68,29 @@ while (loop) {
 
       break;
 
+    //Modulo de cadastro
     case 2:
       cadastrarFilme();
 
       break;
 
+    //Modulo de busca
     case 3:
       buscarFilme();
 
       break;
 
+    //Modulo de alteração de cadastro
     case 4:
       editarFilme();
       break;
 
+    //Modulo de exclusão
     case 5:
       deletarFilme();
       break;
 
+    //Opção de saida do sistema
     case 0:
       console.log(`
       Sistema fechado!
@@ -80,6 +98,7 @@ while (loop) {
       loop = false;
       break;
 
+    //AÇÃO PADRÃO DO SISTEMA PARA OPÇÕES INVALIDAS
     default:
       console.log(`
       Operação inválida!
@@ -88,7 +107,12 @@ while (loop) {
   }
 }
 
+
+//FUNÇÕES DO SISTEMA
+
+//Função de listagem
 function listarFilmes() {
+  //Laço para percorrer o banco
   for (const i of filmes) {
     console.log(`Id: ${i.id}
     Nome: ${i.nome}
@@ -99,42 +123,65 @@ function listarFilmes() {
   }
 }
 
+//Função de cadastro
 function cadastrarFilme() {
+  //Buscando as novas informações
   let nomeFilme = readline.question("Digite o nome do filme: ");
   let duracaoFilme = readline.questionInt(
     "Digite a duração do filme (em min.): "
   );
   let generoFilme = readline.question("Digite o gênero do filme: ");
   let sinopseFilme = readline.question("Digite a sinopse do filme: ");
-  geradorId++;
 
-  const filme = {
-    id: geradorId,
-    nome: nomeFilme,
-    duracao: duracaoFilme,
-    genero: generoFilme,
-    sinopse: sinopseFilme,
-  };
+  //Criando o novo objeto
+  const filme = new Filme(++geradorId, nomeFilme, duracaoFilme, generoFilme, sinopseFilme)
+  //Incluindo o novo objeto no banco
   filmes.push(filme);
-  console.log (`
+
+  //Confirmação da operação
+  console.log(`
   Cadastrado com sucesso!!
   `)
+
+  //Info
+  console.log(`Id: ${filme.id}
+    Nome: ${filme.nome}
+    \t - Duração: ${filme.duracao} min
+    \t - Gênero: ${filme.genero}
+    \t - Sinopse: ${filme.sinopse}
+    --------------------------`)
+
+
 }
 
+//Função de busca por nome
 function buscarFilme() {
+  //Buscando palavra chave
   let buscarFilme = readline.question(
     "Digite o nome do filme que você deseja buscar: "
   );
 
+  //Percorrendo banco de dados
+  let achei = false
   for (const b of filmes) {
+
+    //convertendo para caixa baixa, e buscando no vetor
     if (buscarFilme.toLowerCase() === b.nome.toLowerCase()) {
+      achei = true;
       console.log(`Id: ${b.id}
       Nome: ${b.nome}
       \t - Duração: ${b.duracao} min
       \t - Gênero: ${b.genero}
       \t - Sinopse: ${b.sinopse}`);
     }
+
   }
+  if (achei === false) {
+    console.log(`
+      Filme não consta na lista.
+      `)
+  }
+
 }
 
 function editarFilme() {
