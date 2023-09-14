@@ -74,24 +74,28 @@ while (loop) {
       break;
 
     case 0:
-      console.log("Sistema fechado!");
+      console.log(`
+      Sistema fechado!
+      `);
       loop = false;
       break;
 
     default:
-      console.log("Operação Inválida");
+      console.log(`
+      Operação inválida!
+      `);
       break;
   }
 }
 
 function listarFilmes() {
   for (const i of filmes) {
-    console.log(`Id: ${i.id}`);
-    console.log(`Nome: ${i.nome}`);
-    console.log(`\t - Duração: ${i.duracao} min`);
-    console.log(`\t - Gênero: ${i.genero}`);
-    console.log(`\t - Sinopse: ${i.sinopse}`);
-    console.log(`--------------------------`);
+    console.log(`Id: ${i.id}
+    Nome: ${i.nome}
+    \t - Duração: ${i.duracao} min
+    \t - Gênero: ${i.genero}
+    \t - Sinopse: ${i.sinopse}
+    --------------------------`);
   }
 }
 
@@ -113,7 +117,8 @@ function cadastrarFilme() {
   };
   filmes.push(filme);
   console.log (`
-  Cadastrado com sucesso!!`)
+  Cadastrado com sucesso!!
+  `)
 }
 
 function buscarFilme() {
@@ -123,19 +128,19 @@ function buscarFilme() {
 
   for (const b of filmes) {
     if (buscarFilme.toLowerCase() === b.nome.toLowerCase()) {
-      console.log(`Id: ${b.id}`);
-      console.log(`Nome: ${b.nome}`);
-      console.log(`\t - Duração: ${b.duracao} min`);
-      console.log(`\t - Gênero: ${b.genero}`);
-      console.log(`\t - Sinopse: ${b.sinopse}`);
+      console.log(`Id: ${b.id}
+      Nome: ${b.nome}
+      \t - Duração: ${b.duracao} min
+      \t - Gênero: ${b.genero}
+      \t - Sinopse: ${b.sinopse}`);
     }
   }
 }
 
 function editarFilme() {
   let buscarFilme = readline.question(
-    "Digite o nome do filme que você deseja editar: "
-  );
+    `Digite o nome do filme que você deseja editar: 
+    `);
   for (const i of filmes) {
     if (buscarFilme.toLowerCase() === i.nome.toLowerCase()) {
       console.log(`Filme selecionado: ${i.nome}
@@ -197,7 +202,9 @@ function deletarFilme() {
           console.log("de volta ao menu principal: ");
           repetir = false;
         } else {
-          console.log("opção inválida");
+          console.log(`
+          Opção inválida
+          `);
         }
       }
     }
