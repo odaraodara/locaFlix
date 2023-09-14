@@ -3,19 +3,21 @@ const readline = require("readline-sync");
 const filme1 = {
   id: 1,
   nome: "Titanic",
-  duraçao: 194,
+  duracao: 194,
   genero: "drama",
   sinopse:
-    "Um artista pobre e uma jovem rica se conhecem e se apaixonam na fatídica viagem inaugural do Titanic em 1912. Embora esteja noiva do arrogante herdeiro de uma siderúrgica, a jovem desafia sua família e amigos em busca do verdadeiro amor.",
+    `Um artista pobre e uma jovem rica se conhecem e se apaixonam na fatídica viagem inaugural do Titanic em 1912. 
+    Embora esteja noiva do arrogante herdeiro de uma siderúrgica, a jovem desafia sua família e amigos em busca do verdadeiro amor.`,
 };
 
 const filme2 = {
   id: 2,
   nome: "UP: Altas Aventuras",
-  duraçao: 96,
+  duracao: 96,
   genero: "animação",
   sinopse:
-    "Uma animação que conta a história de Carl e Russell que, despropositadamente, partem juntos em busca de um belíssimo lugar chamado Paraíso das Cachoeiras.",
+    `Uma animação que conta a história de Carl e Russell que, despropositadamente, partem juntos em busca de um belíssimo
+    lugar chamado Paraíso das Cachoeiras.`,
 };
 
 const filmes = [filme1, filme2];
@@ -76,7 +78,7 @@ function listarFilmes() {
   for (const i of filmes) {
     console.log(`Id: ${i.id}`);
     console.log(`Nome: ${i.nome}`);
-    console.log(`\t - Duração: ${i.duraçao} min`);
+    console.log(`\t - Duração: ${i.duracao} min`);
     console.log(`\t - Gênero: ${i.genero}`);
     console.log(`\t - Sinopse: ${i.sinopse}`);
     console.log(`--------------------------`);
@@ -100,6 +102,8 @@ function cadastrarFilme() {
     sinopse: sinopseFilme,
   };
   filmes.push(filme);
+  console.log (`
+  Cadastrado com sucesso!!`)
 }
 
 function buscarFilme() {
@@ -111,7 +115,7 @@ function buscarFilme() {
     if (buscarFilme.toLowerCase() === b.nome.toLowerCase()) {
       console.log(`Id: ${b.id}`);
       console.log(`Nome: ${b.nome}`);
-      console.log(`\t - Duração: ${b.duraçao} min`);
+      console.log(`\t - Duração: ${b.duracao} min`);
       console.log(`\t - Gênero: ${b.genero}`);
       console.log(`\t - Sinopse: ${b.sinopse}`);
     }
@@ -125,7 +129,7 @@ function editarFilme() {
   for (const i of filmes) {
     if (buscarFilme.toLowerCase() === i.nome.toLowerCase()) {
       console.log(`Filme selecionado: ${i.nome}
-        - Duração: ${i.duraçao} min
+        - Duração: ${i.duracao} min
         - Gênero: ${i.genero}
         - Sinopse: ${i.sinopse}
         `);
@@ -143,7 +147,7 @@ function editarFilme() {
           i.nome = readline.question("Novo título do filme: ");
           break;
         case 2:
-          i.duraçao = readline.questionInt(
+          i.duracao = readline.questionInt(
             "Novo tempo de duração do filme (em min.): "
           );
           break;
