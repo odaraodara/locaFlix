@@ -183,5 +183,15 @@ module.exports = {
   deletarFilme,
 };
 
+/*
+MELHORIAS QUE PODERIAM SER FEITAS AO PROJETO:
+
+- Disponibilizar imagens e capas dos filmes;
+- Disponibilizar links/streaming para assistir trailers ou filmes;
+- Disponibilizar funções para o usuario final (favoritar, audio, legendas, avaliar);
+- Acrescentar opção de checar lançamentos futuros e datas de estreia;
+- Acrescentar opções de checagem de planos de assinatura e eventuais tarifas
+
+*/
 
 
