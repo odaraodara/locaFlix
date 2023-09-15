@@ -10,7 +10,7 @@ class Filme {
 
   // console.log dos filmes
   mostrarDadosFilme() {
-    console.clear()
+    // console.clear()
     console.log(`Id: ${this.id}
     Nome: ${this.nome}
     \t - Duração: ${this.duracao} min

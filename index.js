@@ -25,6 +25,7 @@ while (loop) {
   switch (opcao) {
     //Modulo de consulta
     case 1:
+      console.clear()
       console.log("Todos os filmes");
       console.log(" ----------------");
 
@@ -34,28 +35,33 @@ while (loop) {
 
     //Modulo de cadastro
     case 2:
+      console.clear()
       cadastrarFilme();
 
       break;
 
     //Modulo de busca
     case 3:
+      console.clear()
       buscarFilme();
 
       break;
 
     //Modulo de alteração de cadastro
     case 4:
+      console.clear()
       editarFilme();
       break;
 
     //Modulo de exclusão
     case 5:
+      console.clear()
       deletarFilme();
       break;
 
     //Opção de saida do sistema
     case 0:
+      console.clear()
       console.log(`
       Sistema fechado!
       `);
@@ -64,6 +70,7 @@ while (loop) {
 
     //AÇÃO PADRÃO DO SISTEMA PARA OPÇÕES INVALIDAS
     default:
+      console.clear()
       console.log(`
       Operação inválida!
       `);
