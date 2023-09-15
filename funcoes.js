@@ -50,28 +50,36 @@ function buscarFilme() {
   for (const b of filmes) {
 
     //convertendo para minúsculo e buscando todos os filmes de acordo com a palavra da busca.
+    //busca fracionada, includes
     if (b.nome.toLowerCase().includes(buscarFilme.toLowerCase())) {
+      
       achei = true;
 
       b.mostrarDadosFilme()
     }
   }
   if (achei === false) {
+    //Caso o nome do filme não seja encontrado
     console.log(`
         Filme não consta na lista.
         `)
   }
 }
 
+//Modulo de alteração
 function editarFilme() {
+
   let buscarFilme = readline.question(
     `Digite o nome do filme que você deseja editar: 
       `);
+  //Percorrendo banco de dados
   for (const i of filmes) {
+    //Buscando filme pela nome
     if (buscarFilme.toLowerCase() === i.nome.toLowerCase()) {
       console.log(`Filme selecionado: `);
       i.mostrarDadosFilme()
 
+      //Exibindo menu secundario
       console.log(`Opções de edição: 
           1 - Editar título
           2 - Editar duração
@@ -81,6 +89,7 @@ function editarFilme() {
 
       const escolha = readline.questionInt("Digite a opção desejada: ");
 
+      //Editando campos do objeto filme
       switch (escolha) {
         case 1:
           i.nome = readline.question("Novo título do filme: ");
@@ -105,14 +114,18 @@ function editarFilme() {
   }
 }
 
+//Modulo de exclusão
 function deletarFilme() {
   let buscarFilme = readline.question(
     "Digite o nome do filme que você deseja deletar: "
   );
+  //Percorrendo banco
   for (const i of filmes) {
     let repetir = true;
+    //busca pelo nome
     if (buscarFilme.toLowerCase() === i.nome.toLowerCase()) {
       while (repetir == true) {
+        //confirmação de exclusão
         let confirmar =
           readline.questionInt(`Deseja excluir ${i.nome} do sistema?
               para SIM - digite 1
@@ -135,6 +148,7 @@ function deletarFilme() {
   }
 }
 
+//importando funções
 module.exports = {
   listarFilmes,
   cadastrarFilme,
@@ -142,3 +156,6 @@ module.exports = {
   editarFilme,
   deletarFilme,
 };
+
+
+
