@@ -18,11 +18,20 @@ function listarFilmes() {
 function cadastrarFilme() {
   //Buscando as novas informações
   let nomeFilme = readline.question("Digite o nome do filme: ");
+  while(nomeFilme === "" || nomeFilme.length > 20){
+    nomeFilme = readline.question("Digite o nome do filme: ");
+  }
   let duracaoFilme = readline.questionInt(
     "Digite a duração do filme (em min.): "
   );
   let generoFilme = readline.question("Digite o gênero do filme: ");
+  while (generoFilme === "" || generoFilme.length > 15){
+    generoFilme = readline.question("Digite o gênero do filme: ");
+  }
   let sinopseFilme = readline.question("Digite a sinopse do filme: ");
+  while (sinopseFilme === ""){
+    sinopseFilme = readline.question("Digite a sinopse do filme: ");
+  }
 
   //Criando o novo objeto
   const filme = new Filme(++geradorId, nomeFilme, duracaoFilme, generoFilme, sinopseFilme)
@@ -33,6 +42,7 @@ function cadastrarFilme() {
   console.log(`
     Cadastrado com sucesso!!
     `)
+
 
   //Info
   filme.mostrarDadosFilme()
@@ -52,7 +62,7 @@ function buscarFilme() {
     //convertendo para minúsculo e buscando todos os filmes de acordo com a palavra da busca.
     //busca fracionada, includes
     if (b.nome.toLowerCase().includes(buscarFilme.toLowerCase())) {
-      
+
       achei = true;
 
       b.mostrarDadosFilme()
