@@ -10,12 +10,7 @@ let geradorId = 2;
 function listarFilmes() {
   //Laço para percorrer o banco
   for (const i of filmes) {
-    console.log(`Id: ${i.id}
-      Nome: ${i.nome}
-      \t - Duração: ${i.duracao} min
-      \t - Gênero: ${i.genero}
-      \t - Sinopse: ${i.sinopse}
-      --------------------------`);
+    i.mostrarDadosFilme()
   }
 }
 
@@ -40,14 +35,7 @@ function cadastrarFilme() {
     `)
 
   //Info
-  console.log(`Id: ${filme.id}
-      Nome: ${filme.nome}
-      \t - Duração: ${filme.duracao} min
-      \t - Gênero: ${filme.genero}
-      \t - Sinopse: ${filme.sinopse}
-      --------------------------`)
-
-
+  filme.mostrarDadosFilme()
 }
 
 //Função de busca por nome
@@ -65,11 +53,7 @@ function buscarFilme() {
     if (b.nome.toLowerCase().includes(buscarFilme.toLowerCase())) {
       achei = true;
 
-      console.log(`Id: ${b.id}
-        Nome: ${b.nome}
-        \t - Duração: ${b.duracao} min
-        \t - Gênero: ${b.genero}
-        \t - Sinopse: ${b.sinopse}`);
+      b.mostrarDadosFilme()
     }
   }
   if (achei === false) {
@@ -85,11 +69,9 @@ function editarFilme() {
       `);
   for (const i of filmes) {
     if (buscarFilme.toLowerCase() === i.nome.toLowerCase()) {
-      console.log(`Filme selecionado: ${i.nome}
-          - Duração: ${i.duracao} min
-          - Gênero: ${i.genero}
-          - Sinopse: ${i.sinopse}
-          `);
+      console.log(`Filme selecionado: `);
+      i.mostrarDadosFilme()
+
       console.log(`Opções de edição: 
           1 - Editar título
           2 - Editar duração

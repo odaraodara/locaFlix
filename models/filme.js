@@ -7,6 +7,16 @@ class Filme {
     this.genero = genero;
     this.sinopse = sinopse
   }
+
+  // console.log dos filmes
+  mostrarDadosFilme() {
+    console.log(`Id: ${this.id}
+    Nome: ${this.nome}
+    \t - Duração: ${this.duracao} min
+    \t - Gênero: ${this.genero}
+    \t - Sinopse: ${this.sinopse}
+    --------------------------`);
+  }
 }
 
 //Objetos iniciais
