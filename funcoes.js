@@ -19,6 +19,7 @@ function cadastrarFilme() {
   //Buscando as novas informações
   let nomeFilme = readline.question("Digite o nome do filme: ");
   while(nomeFilme === "" || nomeFilme.length > 20){
+    console.log("O nome do filme deve ter até 20 caracteres e não pode ser vazio");
     nomeFilme = readline.question("Digite o nome do filme: ");
   }
   let duracaoFilme = readline.questionInt(
@@ -26,10 +27,12 @@ function cadastrarFilme() {
   );
   let generoFilme = readline.question("Digite o gênero do filme: ");
   while (generoFilme === "" || generoFilme.length > 15){
+    console.log("O gênero do filme deve ter até 15 caracteres e não pode ser vazio");
     generoFilme = readline.question("Digite o gênero do filme: ");
   }
   let sinopseFilme = readline.question("Digite a sinopse do filme: ");
   while (sinopseFilme === ""){
+    console.log("A sinopse do filme não pode ser vazia");
     sinopseFilme = readline.question("Digite a sinopse do filme: ");
   }
 
@@ -103,6 +106,10 @@ function editarFilme() {
       switch (escolha) {
         case 1:
           i.nome = readline.question("Novo título do filme: ");
+          while(i.nome === "" || i.nome.length > 20){
+           console.log("O nome do filme deve ter até 20 caracteres e não pode ser vazio");
+           i.nome = readline.question("Digite o nome do filme: ");
+          }
           break;
         case 2:
           i.duracao = readline.questionInt(
@@ -111,9 +118,17 @@ function editarFilme() {
           break;
         case 3:
           i.genero = readline.question("Novo gênero do filme: ");
+          while (i.genero === "" || i.genero.length > 15){
+            console.log("O gênero do filme deve ter até 15 caracteres e não pode ser vazio");
+            i.genero = readline.question("Digite o gênero do filme: ");
+          }
           break;
         case 4:
           i.sinopse = readline.question("Nova sinopse do filme: ");
+          while (i.sinopse === ""){
+            console.log("A sinopse do filme não pode ser vazia");
+            i.sinopse = readline.question("Digite a sinopse do filme: ");
+          }
           break;
         case 0:
           break;
