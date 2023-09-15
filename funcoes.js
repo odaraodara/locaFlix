@@ -41,6 +41,7 @@ function cadastrarFilme() {
   //Incluindo o novo objeto no banco
   filmes.push(filme);
 
+
   //Confirmação da operação
   console.log(`
     Cadastrado com sucesso!!

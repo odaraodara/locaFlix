@@ -10,13 +10,16 @@ class Filme {
 
   // console.log dos filmes
   mostrarDadosFilme() {
+    console.clear()
     console.log(`Id: ${this.id}
     Nome: ${this.nome}
     \t - Duração: ${this.duracao} min
     \t - Gênero: ${this.genero}
     \t - Sinopse: ${this.sinopse}
     --------------------------`);
+
   }
+
 }
 
 //Objetos iniciais
