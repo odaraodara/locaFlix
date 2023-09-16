@@ -1,5 +1,6 @@
-const readline = require("readline-sync");
-const { Filme, filmes } = require("./models/filme.js");
+import { question, questionInt } from "readline-sync";
+import {Filme, filmes} from './models/filme.js';
+
 
 //GERADOR DA CHAVE IDENTIFICADORA DO OBJETO
 let geradorId = 2;
@@ -7,7 +8,7 @@ let geradorId = 2;
 //FUNÇÕES DO SISTEMA
 
 //Função de listagem
-function listarFilmes() {
+export function listarFilmes() {
   //Laço para percorrer o banco
   for (const i of filmes) {
     i.mostrarDadosFilme()
@@ -15,25 +16,25 @@ function listarFilmes() {
 }
 
 //Função de cadastro
-function cadastrarFilme() {
+export function cadastrarFilme() {
   //Buscando as novas informações
-  let nomeFilme = readline.question("Digite o nome do filme: ");
+  let nomeFilme = question("Digite o nome do filme: ");
   while (nomeFilme === "" || nomeFilme.length > 20) {
     console.log("O nome do filme deve ter até 20 caracteres e não pode ser vazio");
-    nomeFilme = readline.question("Digite o nome do filme: ");
+    nomeFilme = question("Digite o nome do filme: ");
   }
-  let duracaoFilme = readline.questionInt(
+  let duracaoFilme = questionInt(
     "Digite a duração do filme (em min.): "
   );
-  let generoFilme = readline.question("Digite o gênero do filme: ");
+  let generoFilme = question("Digite o gênero do filme: ");
   while (generoFilme === "" || generoFilme.length > 15) {
     console.log("O gênero do filme deve ter até 15 caracteres e não pode ser vazio");
-    generoFilme = readline.question("Digite o gênero do filme: ");
+    generoFilme = question("Digite o gênero do filme: ");
   }
-  let sinopseFilme = readline.question("Digite a sinopse do filme: ");
+  let sinopseFilme = question("Digite a sinopse do filme: ");
   while (sinopseFilme === "") {
     console.log("A sinopse do filme não pode ser vazia");
-    sinopseFilme = readline.question("Digite a sinopse do filme: ");
+    sinopseFilme = question("Digite a sinopse do filme: ");
   }
 
   //Criando o novo objeto
@@ -53,9 +54,9 @@ function cadastrarFilme() {
 }
 
 //Função de busca por nome
-function buscarFilme() {
+export function buscarFilme() {
   //Buscando palavra chave
-  let buscarFilme = readline.question(
+  let buscarFilme = question(
     "Digite o nome do filme que você deseja buscar: "
   );
 
@@ -81,9 +82,9 @@ function buscarFilme() {
 }
 
 //Modulo de alteração
-function editarFilme() {
+export function editarFilme() {
 
-  let buscarFilme = readline.question(
+  let buscarFilme = question(
     `Digite o nome do filme que você deseja editar: 
       `);
 
@@ -103,34 +104,34 @@ function editarFilme() {
           4 - Editar sinopse
           0 - voltar para o menu principal`);
 
-      const escolha = readline.questionInt("Digite a opção desejada: ");
+      const escolha = questionInt("Digite a opção desejada: ");
 
       //Editando campos do objeto filme
       switch (escolha) {
         case 1:
-          i.nome = readline.question("Novo título do filme: ");
+          i.nome = question("Novo título do filme: ");
           while (i.nome === "" || i.nome.length > 20) {
             console.log("O nome do filme deve ter até 20 caracteres e não pode ser vazio");
-            i.nome = readline.question("Digite o nome do filme: ");
+            i.nome = question("Digite o nome do filme: ");
           }
           break;
         case 2:
-          i.duracao = readline.questionInt(
+          i.duracao = questionInt(
             "Novo tempo de duração do filme (em min.): "
           );
           break;
         case 3:
-          i.genero = readline.question("Novo gênero do filme: ");
+          i.genero = question("Novo gênero do filme: ");
           while (i.genero === "" || i.genero.length > 15) {
             console.log("O gênero do filme deve ter até 15 caracteres e não pode ser vazio");
-            i.genero = readline.question("Digite o gênero do filme: ");
+            i.genero = question("Digite o gênero do filme: ");
           }
           break;
         case 4:
-          i.sinopse = readline.question("Nova sinopse do filme: ");
+          i.sinopse = question("Nova sinopse do filme: ");
           while (i.sinopse === "") {
             console.log("A sinopse do filme não pode ser vazia");
-            i.sinopse = readline.question("Digite a sinopse do filme: ");
+            i.sinopse = question("Digite a sinopse do filme: ");
           }
           break;
         case 0:
@@ -150,8 +151,8 @@ function editarFilme() {
 }
 
 //Modulo de exclusão
-function deletarFilme() {
-  let buscarFilme = readline.question(
+export function deletarFilme() {
+  let buscarFilme = question(
     "Digite o nome do filme que você deseja deletar: "
   );
   let achei = false
@@ -163,7 +164,7 @@ function deletarFilme() {
       while (repetir == true) {
         //confirmação de exclusão
         let confirmar =
-          readline.questionInt(`Deseja excluir ${i.nome} do sistema?
+          questionInt(`Deseja excluir ${i.nome} do sistema?
               para SIM - digite 1
               para NÃO - digite 0
               : `);
@@ -191,14 +192,8 @@ function deletarFilme() {
   }
 }
 
-//importando funções
-module.exports = {
-  listarFilmes,
-  cadastrarFilme,
-  buscarFilme,
-  editarFilme,
-  deletarFilme,
-};
+
+
 
 /*
 MELHORIAS QUE PODERIAM SER FEITAS AO PROJETO:

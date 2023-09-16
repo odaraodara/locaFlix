@@ -1,6 +1,5 @@
-const readline = require("readline-sync");
-const {listarFilmes,cadastrarFilme,buscarFilme,editarFilme,deletarFilme} = require("./funcoes.js");
-const {Filme,filmes} = require("./models/filme.js");
+import { questionInt } from "readline-sync";
+import { listarFilmes, cadastrarFilme, buscarFilme, editarFilme, deletarFilme } from "./funcoes.js";
 
 //Condição de saida
 let loop = true;
@@ -21,7 +20,7 @@ while (loop) {
    ========================`);
 
   //Buscando opção do usuario
-  let opcao = readline.questionInt("Escolha a opção: ");
+  let opcao = questionInt("Escolha a opção: ");
   switch (opcao) {
     //Modulo de consulta
     case 1:
@@ -77,3 +76,4 @@ while (loop) {
       break;
   }
 }
+
