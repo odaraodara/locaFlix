@@ -18,7 +18,7 @@ function listarFilmes() {
 function cadastrarFilme() {
   //Buscando as novas informações
   let nomeFilme = readline.question("Digite o nome do filme: ");
-  while(nomeFilme === "" || nomeFilme.length > 20){
+  while (nomeFilme === "" || nomeFilme.length > 20) {
     console.log("O nome do filme deve ter até 20 caracteres e não pode ser vazio");
     nomeFilme = readline.question("Digite o nome do filme: ");
   }
@@ -26,12 +26,12 @@ function cadastrarFilme() {
     "Digite a duração do filme (em min.): "
   );
   let generoFilme = readline.question("Digite o gênero do filme: ");
-  while (generoFilme === "" || generoFilme.length > 15){
+  while (generoFilme === "" || generoFilme.length > 15) {
     console.log("O gênero do filme deve ter até 15 caracteres e não pode ser vazio");
     generoFilme = readline.question("Digite o gênero do filme: ");
   }
   let sinopseFilme = readline.question("Digite a sinopse do filme: ");
-  while (sinopseFilme === ""){
+  while (sinopseFilme === "") {
     console.log("A sinopse do filme não pode ser vazia");
     sinopseFilme = readline.question("Digite a sinopse do filme: ");
   }
@@ -86,6 +86,8 @@ function editarFilme() {
   let buscarFilme = readline.question(
     `Digite o nome do filme que você deseja editar: 
       `);
+
+  let achei = false
   //Percorrendo banco de dados
   for (const i of filmes) {
     //Buscando filme pela nome
@@ -107,9 +109,9 @@ function editarFilme() {
       switch (escolha) {
         case 1:
           i.nome = readline.question("Novo título do filme: ");
-          while(i.nome === "" || i.nome.length > 20){
-           console.log("O nome do filme deve ter até 20 caracteres e não pode ser vazio");
-           i.nome = readline.question("Digite o nome do filme: ");
+          while (i.nome === "" || i.nome.length > 20) {
+            console.log("O nome do filme deve ter até 20 caracteres e não pode ser vazio");
+            i.nome = readline.question("Digite o nome do filme: ");
           }
           break;
         case 2:
@@ -119,14 +121,14 @@ function editarFilme() {
           break;
         case 3:
           i.genero = readline.question("Novo gênero do filme: ");
-          while (i.genero === "" || i.genero.length > 15){
+          while (i.genero === "" || i.genero.length > 15) {
             console.log("O gênero do filme deve ter até 15 caracteres e não pode ser vazio");
             i.genero = readline.question("Digite o gênero do filme: ");
           }
           break;
         case 4:
           i.sinopse = readline.question("Nova sinopse do filme: ");
-          while (i.sinopse === ""){
+          while (i.sinopse === "") {
             console.log("A sinopse do filme não pode ser vazia");
             i.sinopse = readline.question("Digite a sinopse do filme: ");
           }
@@ -136,7 +138,14 @@ function editarFilme() {
         default:
           console.log("Opção inválida");
       }
+      achei = true
     }
+  }
+  if (achei === false) {
+    //Caso o nome do filme não seja encontrado
+    console.log(`
+        Filme não consta na lista.
+        `)
   }
 }
 
@@ -145,6 +154,7 @@ function deletarFilme() {
   let buscarFilme = readline.question(
     "Digite o nome do filme que você deseja deletar: "
   );
+  let achei = false
   //Percorrendo banco
   for (const i of filmes) {
     let repetir = true;
@@ -170,7 +180,14 @@ function deletarFilme() {
             `);
         }
       }
+      achei = true
     }
+  }
+  if (achei === false) {
+    //Caso o nome do filme não seja encontrado
+    console.log(`
+        Filme não consta na lista.
+        `)
   }
 }
 
@@ -193,5 +210,3 @@ MELHORIAS QUE PODERIAM SER FEITAS AO PROJETO:
 - Acrescentar opções de checagem de planos de assinatura e eventuais tarifas
 
 */
-
-
