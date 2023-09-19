@@ -9,7 +9,7 @@ while (loop) {
 
   //MENU
   console.log(`
-  =========LOCAFLIX=========
+  =========FILMOTECA=========
    ==========MENU==========
    0 - Sair do Sistema
    1 - Listar filmes
